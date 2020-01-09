@@ -11,7 +11,6 @@ logging:
 spring:
   application:
     name: flowable-demo
-  使用内存数据库
   datasource:
     druid:
       driver-class-name: com.mysql.jdbc.Driver
@@ -43,8 +42,16 @@ spring:
         login-password: 123456
         allow: 127.0.0.1
         deny:
+      #这里使用自己的数据库配置
+      url: jdbc:mysql://localhost:3306/flowable?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password:
+  flyway:
+    enabled: true
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+
 

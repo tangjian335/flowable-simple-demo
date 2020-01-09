@@ -18,8 +18,8 @@ public class CommonExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Result methodNotSupported(Throwable e) {
+    public Result<String> methodNotSupported(Throwable e) {
         log.debug("服务器异常", e);
-        return new Result(500, e.getMessage());
+        return new Result<>(500, e.getMessage());
     }
 }
