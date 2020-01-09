@@ -1,0 +1,50 @@
+server:
+  port: 65500
+
+
+#日志
+logging:
+  file: log/${spring.application.name}.log
+#  level:
+#    org.flowable: debug
+
+spring:
+  application:
+    name: flowable-demo
+  使用内存数据库
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 20
+      max-active: 50
+      max-wait: 60000
+      min-idle: 1
+      pool-prepared-statements: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      max-open-prepared-statements: 20
+      # WebStatFilter配置
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico
+        session-stat-enable: true
+        profile-enable: true
+      # StatViewServlet配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: root
+        login-password: 123456
+        allow: 127.0.0.1
+        deny:
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
